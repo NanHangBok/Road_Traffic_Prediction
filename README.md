@@ -42,12 +42,14 @@ end_day = now - timedelta(hours=23)`<br>
 ### 데이터 전처리
 - 과거 날씨 정보
   - `historical_weather_df = historical_weather_df[['tm', 'ta', 'rn', 'ws']].rename(columns={'tm': 'datetime', 'ta': 'Temperature', 'rn': 'Rainfall', 'ws': 'WindSpeed'})`
-  - api가 제공하는 형태가 tm, ta, rn, ws로 제공되기 때문에 Column명을 변경한다.
+  - api가 제공하는 형태가 tm, ta, rn, ws로 제공되기 때문에 Column명을 변경한다.<br>
+  
 - 최근 날씨 정보
   - `filtered_real_time_weather_df = real_time_weather_df[real_time_weather_df['category'].isin(['T1H', 'RN1', 'WSD'])]`
   - 제공되는 Category 중 T1H, RN1, WSD만 가져온다.
   - `real_time_weather_pivot = real_time_weather_pivot.rename(columns={'T1H': 'Temperature', 'RN1': 'Rainfall', 'WSD': 'WindSpeed'})`
-  - 해당하는 column 명을 각 각 알맞게 수정한다. ('T1H': 'Temperature', 'RN1': 'Rainfall', 'WSD': 'WindSpeed')
+  - 해당하는 column 명을 각 각 알맞게 수정한다. ('T1H': 'Temperature', 'RN1': 'Rainfall', 'WSD': 'WindSpeed')<br>
+  
 - 도로 교통량 정보
   - `traffic_df = traffic_df[traffic_df['linkID'] == '1630021501'] # 데이터가 너무 많아서 한개의 도로만 사용`
   - ```
@@ -64,11 +66,26 @@ end_day = now - timedelta(hours=23)`<br>
   - 제공되는 정보가 날짜마다 같은 행에 각 시간 별 교통량이 제공되기 때문에 포맷을 통일하기 위해 수정
     | 날짜 | hour01 | hour 02|...|
     |---|:---:|:---:|:---:|
-    |20240101|24|21|...|
+    |20240101|24|21|...|<br>
     
-통합된 데이터
+- 통합된 데이터
+  - 날씨 데이터
+    - `weather_df = pd.concat([historical_weather_df, real_time_weather_pivot]).drop_duplicates().sort_values(by='datetime')`
+    - 과거 날씨 데이터와 최근 날씨 데이터 병합
+    - `weather_df[['Temperature', 'Rainfall', 'WindSpeed']] = weather_df[['Temperature', 'Rainfall', 'WindSpeed']].fillna(0)`
+    - 결측치 채우기<br>
+
+  -`traffic_melted_df = traffic_melted_df[['datetime', 'traffic_volume']]`
+  - 필요한 정보만 남기기
+  -`merged_data = pd.merge(traffic_melted_df, weather_df, on='datetime', how='inner')`
 <br>
+
 ### 데이터 변환
+- Prophet
+- `recent_data = merged_data[['datetime', 'traffic_volume', 'Temperature', 'Rainfall', 'WindSpeed']].rename(columns={'datetime': 'ds', 'traffic_volume': 'y'})`
+- `recent_data = recent_data.sort_values(by='ds')`
+- Prophet에서는 날짜를 ds, 결과를 y로 저장하여야 함
+
 
 <hr>
 
