@@ -92,6 +92,9 @@ end_day = now - timedelta(hours=23)`<br>
 ## 3. XGBoost
 ### 코드
 ### 결과
+![xgboost1](https://github.com/user-attachments/assets/c714472a-c306-4f21-9d14-cdeb14865d4c)
+
+![xgboost2](https://github.com/user-attachments/assets/d9208d6e-9994-4dd5-a035-c7fd15b78a00)
 
 <hr>
 
@@ -99,8 +102,30 @@ end_day = now - timedelta(hours=23)`<br>
 ### 코드
 ### 결과
 
+#### 변수 O
+![prophet_1](https://github.com/user-attachments/assets/a4666b8c-64ed-401d-86fb-449a2e479c92)
+
+#### 변수 없이 진행
+![prophet_no_variable_1](https://github.com/user-attachments/assets/79c212d4-40ed-4e2a-8c78-7f8446b86e26)
+
+
+#### 새로운 정보 제공
+![prophet_prediction_1](https://github.com/user-attachments/assets/1037c319-72fc-4a51-b29a-16572338ebe8)
+
 <hr>
 
 ## 5. NeuralProphet
 ### 코드
 ### 결과
+
+#### 변수 O
+한달<br>
+![neural_prophet_1](https://github.com/user-attachments/assets/f6483727-7102-48ce-b3c5-d011ac4d095e)
+
+일주일<br>
+![neural_prophet_2](https://github.com/user-attachments/assets/b3b75b35-c7e0-43b3-a105-1c121a573f64)
+
+#### 변수 없이 진행
+
+#### 새로운 정보 제공
+![neural_prophet_prediction_1](https://github.com/user-attachments/assets/17b92704-2b2d-4511-a5be-f569e2b8512a)
