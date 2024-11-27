@@ -90,42 +90,57 @@ end_day = now - timedelta(hours=23)`<br>
 <hr>
 
 ## 3. XGBoost
-### 코드
 ### 결과
+##### 최종 RMSE: 35.09832311812178
+
+일주일<br>
 ![xgboost1](https://github.com/user-attachments/assets/c714472a-c306-4f21-9d14-cdeb14865d4c)
 
+하루<br>
+![xgboost2](https://github.com/user-attachments/assets/c34122cd-1792-4f12-b60f-73a46a5838e7)
+
+예측<br>
 ![xgboost2](https://github.com/user-attachments/assets/d9208d6e-9994-4dd5-a035-c7fd15b78a00)
 
 <hr>
 
 ## 4. Prophet
-### 코드
+
 ### 결과
 
 #### 변수 O
-![prophet_1](https://github.com/user-attachments/assets/a4666b8c-64ed-401d-86fb-449a2e479c92)
+##### RMSE Mean: 85.02706092595479
+![prophet_1](https://github.com/user-attachments/assets/36ade19a-9889-44c2-b6d6-2efd78933c16)
 
 #### 변수 없이 진행
-![prophet_no_variable_1](https://github.com/user-attachments/assets/79c212d4-40ed-4e2a-8c78-7f8446b86e26)
-
+##### RMSE Mean: 65.75078761356201
+![prophet_no_variable_1](https://github.com/user-attachments/assets/9e528643-8ede-495b-a31c-581d75351889)
 
 #### 새로운 정보 제공
-![prophet_prediction_1](https://github.com/user-attachments/assets/1037c319-72fc-4a51-b29a-16572338ebe8)
+![prophet_prediction_1](https://github.com/user-attachments/assets/ff4bccb7-6530-4520-90bb-7a4a159d0bdf)
 
 <hr>
 
 ## 5. NeuralProphet
-### 코드
+
 ### 결과
 
 #### 변수 O
+##### RMSE:  45.29098892211914
+
 한달<br>
-![neural_prophet_1](https://github.com/user-attachments/assets/f6483727-7102-48ce-b3c5-d011ac4d095e)
+![neural_prophet_1](https://github.com/user-attachments/assets/540a132f-cf74-4621-8d32-d318b19b1a0e)
 
 일주일<br>
-![neural_prophet_2](https://github.com/user-attachments/assets/b3b75b35-c7e0-43b3-a105-1c121a573f64)
+![neural_prophet_2](https://github.com/user-attachments/assets/8105660e-f2ab-4bbf-b501-738dea18ea28)
 
 #### 변수 없이 진행
+##### RMSE:  80.39910125732422
+한달<br>
+![neural_prophet_no_variable_1](https://github.com/user-attachments/assets/d1b29b11-a44d-42b3-8d37-9941c17f410c)
+
+일주일<br>
+![neural_prophet_no_variable_2](https://github.com/user-attachments/assets/90191a51-e5d6-4585-a700-f66346a724f4)
 
 #### 새로운 정보 제공
-![neural_prophet_prediction_1](https://github.com/user-attachments/assets/17b92704-2b2d-4511-a5be-f569e2b8512a)
+![neural_prophet_prediction_1](https://github.com/user-attachments/assets/13c607bc-70e2-4d95-a136-f0705a2f99f1)
