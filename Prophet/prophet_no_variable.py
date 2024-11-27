@@ -40,9 +40,9 @@ m.fit(train)
 
 # Cross-validation 수행
 df_cv = cross_validation(m, 
-                         initial='720 hours',   # 초기 학습 데이터를 60일로 늘림
-                        period='24 hours',   # 테스트 간격을 2일로 변경
-                        horizon='3 hours'    # 여전히 3시간 예측
+                         initial='720 hours',
+                        period='24 hours',
+                        horizon='3 hours'
                          )
 
 # 성능 지표 계산
@@ -55,6 +55,10 @@ print(df_p.describe())
 # 모델 전체 RMSE 평균
 rmse_mean = df_p['rmse'].mean()
 print(f"RMSE Mean: {rmse_mean}")
+
+# 테스트 데이터 예측
+test_future = test['ds'].copy()
+test_forecast = m.predict(test_future)
 
 # 시각화
 # 마지막 일주일

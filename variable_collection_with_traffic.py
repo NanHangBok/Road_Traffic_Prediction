@@ -9,12 +9,12 @@ import os
 # .env 파일 로드
 load_dotenv('./api.env')
 
-# 환경 변수 가져오기
-real_time_weather_api_key = os.getenv('REAL_TIME_WEATHER_API_KEY')
-traffic_api_key = os.getenv('TRAFFIC_API_KEY')
-past_weather_url = os.getenv('PAST_WEATHER_URL')
-future_weather_url = os.getenv('FUTURE_WEATHER_URL')
-traffic_url = os.getenv('TRAFFIC_URL')
+# API 키 및 URL 설정
+real_time_weather_api_key = os.getenv('real_time_weather_api_key')
+traffic_api_key = os.getenv('traffic_api_key')
+past_weather_url = os.getenv('real_time_weather_url')
+future_weather_url = os.getenv('future_weather_url')
+traffic_url = os.getenv('traffic_url')
 
 # 최근 발표 시간을 계산하는 함수
 def get_recent_base_time(now):
@@ -46,7 +46,8 @@ for hour_offset in range(1, 24):  # 과거 23시간 데이터 수집
         'base_date': date_str,
         'base_time': time_str,
         'nx': 54,
-        'ny': 124
+        'ny': 124,
+        
     }
 
     try:
@@ -133,6 +134,8 @@ if not past_weather_pivot.empty and now.replace(minute=0, second=0, microsecond=
     current_time_row = future_weather_pivot[future_weather_pivot['datetime'] == now.replace(minute=0, second=0, microsecond=0)]
     if not current_time_row.empty:
         past_weather_pivot = pd.concat([past_weather_pivot, current_time_row])
+
+past_weather_pivot.to_csv('te1.csv', index=False, encoding='utf-8-sig')
 
 # 과거 데이터와 미래 데이터 병합
 final_weather_data = pd.concat([past_weather_pivot, future_weather_pivot]).drop_duplicates(subset='datetime').sort_values(by='datetime').reset_index(drop=True)
