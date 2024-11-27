@@ -55,31 +55,6 @@ params = {
     'stnIds': 112 # 인천 수도권기상청
 }
 
-# 페이지 순회하며 데이터 요청
-while True:
-    try:
-        response = requests.get(historical_weather_url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            print(data)
-            items = data['response']['body']['items']['item']
-            historical_weather_data.extend(items)
-            
-            # 현재 페이지의 데이터 개수가 numOfRows보다 적으면 마지막 페이지이므로 종료
-            if len(items) < params['numOfRows']:
-                break
-            else:
-                # 다음 페이지로 이동
-                params['pageNo'] += 1
-        else:
-            print("데이터 요청 실패:", response.status_code)
-            break
-    except requests.exceptions.RequestException as e:
-        print(f"데이터 요청 중 오류 발생: {e}")
-        break
-
-historical_weather_df = pd.DataFrame(historical_weather_data)
-
 response = requests.get(historical_weather_url, params=params)
 if response.status_code == 200:
     data = response.json()
@@ -167,7 +142,7 @@ while current_date <= datetime.strptime(end_day_str, '%Y%m%d'):
     date_str = current_date.strftime('%Y%m%d')
     page_no = 1
     daily_data = []
-
+ 
     while True:
         params = {
             'serviceKey': traffic_api_key,
