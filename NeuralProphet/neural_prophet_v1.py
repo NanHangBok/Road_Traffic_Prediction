@@ -63,7 +63,7 @@ m = NeuralProphet(
     lagged_reg_layers=[16, 32]       # lagged_reg_net의 히든 레이어 크기
 )
 
-# 독립 변인(변수) 추가 및 정규화
+# 변수 추가
 m = m.add_lagged_regressor(names=x_col_lst, normalize="off")  # 독립 변수 추가
 m.add_country_holidays("KR")  # 한국 공휴일 추가
 m.add_seasonality(name="monthly", period=30.5, fourier_order=3) # 월간 계절성 설정
