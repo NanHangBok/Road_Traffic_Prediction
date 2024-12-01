@@ -143,7 +143,7 @@ final_weather_data = pd.concat([past_weather_pivot, future_weather_pivot]).drop_
 # 현재 시간 기준으로 전날 02시부터 1시간 전까지의 예측 범위 설정
 now = datetime.now().replace(minute=0, second=0, microsecond=0)
 end_date = now - timedelta(hours=1)  # 현재 시간에서 1시간 전까지만 설정
-start_time = end_date - timedelta(days=7)  # 1주일 전부터 데이터 수집
+start_time = end_date - timedelta(days=2)  # 2일 전부터 데이터 수집
 
 # 교통량 데이터 수집
 print('교통량 수집 시작')
