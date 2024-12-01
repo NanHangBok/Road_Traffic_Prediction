@@ -42,7 +42,9 @@ m = NeuralProphet(
     epochs=200,                    # 학습 횟수 설정
     learning_rate=0.01,            # 학습률 설정
     n_lags=23,                     # 과거 데이터 23시간 참조
-    n_forecasts=3                 # 3시간 예측
+    n_forecasts=3,                 # 3시간 예측
+    ar_layers=[24, 48, 24],        # ar_net의 히든 레이어 크기
+    lagged_reg_layers=[16, 32]       # lagged_reg_net의 히든 레이어 크기
 )
 
 # 공휴일 및 계절성 추가
