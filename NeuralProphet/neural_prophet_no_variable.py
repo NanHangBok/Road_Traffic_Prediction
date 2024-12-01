@@ -41,7 +41,7 @@ m = NeuralProphet(
     batch_size=64,                 # 배치 사이즈 설정
     epochs=200,                    # 학습 횟수 설정
     learning_rate=0.01,            # 학습률 설정
-    n_lags=24,                     # 과거 데이터 24시간 참조
+    n_lags=23,                     # 과거 데이터 23시간 참조
     n_forecasts=3                 # 3시간 예측
 )
 
